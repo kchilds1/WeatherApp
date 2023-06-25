@@ -20,6 +20,7 @@ In order to make the h1 zip arc like I want, I had to install arcText with npm i
 I also imported useRef from react because I to reference the h1 element and manipulated it directly.
 useRef is used to create a ref object called h1Ref. h1Ref is then assigned to h1. Do this will hold a reference to DOM of h1. Later in the useEffect hook, the h1Ref.current is used to access the current value of ref that is referring to the h1 element. The reference is then passed to the ArcText constructor to create a new ArcText and apply the arc text effect to the h1 element.
 I was also a challenge to get my first React project on Github
+For some reason, after I put in the zip code the weather forcast doesn't display in GitHub, but it does in VsCode.  I'm not sure if I deployed it wrong at this point and will look into it
 
 
 
