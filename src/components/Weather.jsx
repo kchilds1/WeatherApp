@@ -23,7 +23,7 @@ const Weather = () => {
 		if(zipCode.length === 5){
 		await getForecast();
 		}
-	}; //[zipCode])
+	}; 
 	fetchData();
 }, [zipCode,getForecast]);
 
