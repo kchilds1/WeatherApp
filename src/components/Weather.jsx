@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import ArcText from 'arc-text';
 import DayCard from './DayCard';
 
@@ -10,20 +10,22 @@ const weatherApiKey = 'd8d5bfc23a1b4fd285c40136230106';
 const Weather = () => {
 	const [zipCode, setZipCode] = useState('');
 	const [forecastData, setForecastData] = useState([]);
-	const url = `http://api.weatherapi.com/v1/forecast.json?key=${weatherApiKey}&q=${zipCode}&days=7&aqi=no&alerts=no`;
+	const url = `https://api.weatherapi.com/v1/forecast.json?key=${weatherApiKey}&q=${zipCode}&days=7&aqi=no&alerts=no`;
 
-	const getForecast = async () => {
+	const getForecast = useCallback(async () => {
 		const res = await fetch(url);
 		const { forecast } = await res.json();
-		console.log(forecast.forecastday);
 		setForecastData(forecast.forecastday);
-	};
+	}, [url]);
 
 	useEffect(() => {
+		const fetchData = async () => {
 		if(zipCode.length === 5){
-		getForecast();
+		await getForecast();
 		}
-	}, [zipCode]);
+	}; //[zipCode])
+	fetchData();
+}, [zipCode,getForecast]);
 
 	const h1Ref = useRef(null);
 
