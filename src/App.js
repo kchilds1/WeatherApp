@@ -3,7 +3,7 @@ import Particles from "react-particles";
 import { loadFull } from "tsparticles";
 import './App.css';
 import particlesOptions from "./particles.json";
-import Weather from './components/Weather';
+import Weather from './Weather';
 
 function App() {
     const particlesInit = useCallback(main => {
